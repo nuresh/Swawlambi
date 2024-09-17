@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="home_page m-3">
+    <div class="row container-fluid mx-auto">
+    
+        <div class="col-sm-12 col-lg-12">
+            <div class="col-12 mb-2">
+				<!-- Slider START -->
+				<div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
+					<div class="tiny-slider-inner" data-autoplay="true" data-gutter="0" data-arrow="true" data-dots="false" data-items="1">
+						{% for slider in sliders %}
+                            <!-- Card item START -->
+                            <div class="card overflow-hidden h-400px h-md-400px text-center rounded-0" style="background-position:center; background-size:contain; background-repeat:no-repeat;">
+                                <img src="/media/{{slider.image}}" class="img-fluid w-100" alt="Slider Image">
+                                <!-- Card image overlay -->
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center p-2 p-sm-4"> 
+                                    <p class="text-white">{{slider.caption}}</p>
+                                </div>
+                            </div>
+						<!-- Card item END -->
+                        {% endfor %}
+					</div>
+				</div>
+				<!-- Slider END -->
+			</div>
+        </div>
+    </div>
+
+    <section class="pt-0 pt-md-5">
+        <div class="container">
+            <!-- Title -->
+            <div class="row mb-4">
+                <div class="col-lg-8 text-center mx-auto">
+                    <h3 class="mb-0">Products We Sell</h3>
+                </div>
+            </div>
+    
+            <div class="row g-4">
+               {% for p in products %}
+                 <!-- Card Item START -->
+                 <div class="col-md-6 col-lg-4 col-xxl-3">
+                    <div class="card p-2 shadow h-100">
+                        <div class="rounded-top overflow-hidden">
+                            <div class="card-overlay-hover">
+                                <!-- Image -->
+                                <img src="/media/{{p.image}}" class="card-img-top" alt="course image">
+                            </div>
+                        </div>
+                        <!-- Card body -->
+                        <div class="card-body px-2">
+                            <!-- Divider -->
+                            <hr>
+                            <!-- Title -->
+                            <h6 class="card-title"><a href="#">{{p.name}}</a></h6>
+                            <!-- Badge and Price -->
+                            <div class="d-flex justify-content-between align-items-center mb-0">
+                                <!-- Price -->
+                                <h5 class="text-success mb-0">₹{{p.price}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+                <!-- Card Item END -->
+               {% endfor %}
+    
+            </div>
+            <!-- Button -->
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary-soft">View more<i class="fas fa-sync ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    
+{% endblock %}
